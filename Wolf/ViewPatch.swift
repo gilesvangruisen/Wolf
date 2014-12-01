@@ -24,52 +24,12 @@ class ViewPatch: Patch {
     override init(identifier: String) {
         super.init(identifier: identifier)
 
-        addInput("X")
-        addInput("Y")
-        addInput("Width")
-        addInput("Height")
-        addInput("Superview")
-        addInput("Color")
-    }
-
-    override func setInput(inputName: String, newPublink: Publink) {
-        super.setInput(inputName, newPublink: newPublink)
-
-        switch inputName {
-
-        case "X":
-            println("Subscribing to X")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateX)
-            break
-
-        case "Y":
-            println("Subscribing to Y")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateY)
-            break
-
-        case "Width":
-            println("Subscribing to width")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateWidth)
-            break
-
-        case "Height":
-            println("Subscribing to height")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateHeight)
-            break
-
-        case "Color":
-            println("Subscribing to background")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateColor)
-            break
-
-        case "Superview":
-            println("Subscribing to superview")
-            newPublink.subscribeNamed(self.identifier, newSubscriptionBlock: updateSuperview)
-            break
-
-        default:
-            break
-        }
+        addInput("X", updateX)
+        addInput("Y", updateY)
+        addInput("Width", updateWidth)
+        addInput("Height", updateHeight)
+        addInput("Superview", updateSuperview)
+        addInput("Color", updateColor)
     }
 
     func updateX(value: Any) {

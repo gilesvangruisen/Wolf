@@ -20,38 +20,37 @@ class Patch {
     /** The patch's output Publinks */
     var outputs = [String: Publink]()
 
+    init(identifier: String) {
+        self.identifier = identifier
+    }
+
+    /** Add an input with name and publink */
+    func addInput(inputName: String, _ subscriptionBlock: SubscriptionBlock) {
+        let input = Publink()
+        inputs[inputName] = input
+        input.subscribeNamed(self.identifier, subscriptionBlock)
+    }
+
+    /** Remove input by name */
     func removeInput(name: String) {
         if let input = inputs[name] {
-            input.unsubscribe(name)
+            input.unsubscribe(identifier)
             inputs[name] = Publink()
         }
     }
 
-    func subscribe(outputName: String, key: String, _ subscriptionBlock: SubscriptionBlock) {
+    /** Subscribe to output with patch */
+    func subscribe(outputName: String, patch: Patch, _ subscriptionBlock: SubscriptionBlock) {
         if let output = outputs[outputName] {
-            output.subscribe(subscriptionBlock)
+            output.subscribeNamed(patch.identifier, subscriptionBlock)
         }
     }
 
-    func addInput(inputName: String) {
-        inputs[inputName] = Publink()
-        setInput(inputName, newPublink: Publink())
-    }
-
-    func setInput(inputName: String, newPublink: Publink) {
-        if let input = inputs[inputName] {
-            inputs[inputName] = newPublink
-        }
-    }
-
-    func unsubscribe(outputName: String, key: String) {
+    /** Unsubscribe patch from output */
+    func unsubscribe(outputName: String, patch: Patch) {
         if let output = outputs[outputName] {
-            output.unsubscribe(key)
+            output.unsubscribe(patch.identifier)
         }
-    }
-
-    init(identifier: String) {
-        self.identifier = identifier
     }
 
 }
