@@ -11,6 +11,8 @@ import UIKit
 enum ViewPatchInput: PatchInput {
     case X = "X",
     Y = "Y",
+    CenterY = "Center Y",
+    CenterX = "Center X",
     Width = "Width",
     Height = "Height",
     Superview = "Superview",
@@ -26,6 +28,8 @@ class ViewPatch: Patch {
 
         addInput(ViewPatchInput.X.rawValue, updateX)
         addInput(ViewPatchInput.Y.rawValue, updateY)
+        addInput(ViewPatchInput.CenterX.rawValue, updateCenterX)
+        addInput(ViewPatchInput.CenterY.rawValue, updateCenterY)
         addInput(ViewPatchInput.Width.rawValue, updateWidth)
         addInput(ViewPatchInput.Height.rawValue, updateHeight)
         addInput(ViewPatchInput.Superview.rawValue, updateSuperview)
@@ -42,6 +46,18 @@ class ViewPatch: Patch {
     func updateY(value: Any) {
         if let y = value as? CGFloat {
             view.frame = CGRectMake(view.frame.origin.x, y, view.frame.size.width, view.frame.size.height)
+        }
+    }
+
+    func updateCenterX(value: Any) {
+        if let x = value as? CGFloat {
+            view.center.x = x
+        }
+    }
+
+    func updateCenterY(value: Any) {
+        if let y = value as? CGFloat {
+            view.center.y = y
         }
     }
 

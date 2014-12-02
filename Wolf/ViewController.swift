@@ -21,8 +21,8 @@ class ViewController: UIViewController {
 
         let panPatch = PanPatch(identifier: "pan")
         panPatch.inputs[TapPatchInput.View.rawValue]?.publish(view)
-        viewPatch.setInput(ViewPatchInput.X.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.X.rawValue]!)
-        viewPatch.setInput(ViewPatchInput.Y.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.Y.rawValue]!)
+        viewPatch.setInput(ViewPatchInput.CenterX.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.X.rawValue]!)
+        viewPatch.setInput(ViewPatchInput.CenterY.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.Y.rawValue]!)
 
     }
 
