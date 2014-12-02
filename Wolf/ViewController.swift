@@ -20,6 +20,9 @@ class ViewController: UIViewController {
         viewPatch.inputs["Width"]?.publish(100 as CGFloat)
         viewPatch.inputs["Height"]?.publish(100 as CGFloat)
         viewPatch.inputs["Color"]?.publish(UIColor.blueColor())
+
+        let tapPatch = TapPatch(identifier: "1")
+        tapPatch.inputs["View"]?.publish(viewPatch.view)
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		500AC16F1A297F7A009BD736 /* Publink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AC16E1A297F7A009BD736 /* Publink.swift */; };
+		500AC1711A2C3C55009BD736 /* TouchPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AC1701A2C3C55009BD736 /* TouchPatch.swift */; };
 		50D521061A2963EB00DD47B7 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D521051A2963EB00DD47B7 /* Patch.swift */; };
 		50F01DF91A254D4800D3F64E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F01DF81A254D4800D3F64E /* AppDelegate.swift */; };
 		50F01DFB1A254D4800D3F64E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F01DFA1A254D4800D3F64E /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		500AC16E1A297F7A009BD736 /* Publink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Publink.swift; path = Publinks/src/Publink.swift; sourceTree = "<group>"; };
+		500AC1701A2C3C55009BD736 /* TouchPatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchPatch.swift; sourceTree = "<group>"; };
 		50D521051A2963EB00DD47B7 /* Patch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		50F01DF31A254D4800D3F64E /* Wolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F01DF71A254D4800D3F64E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				50F01E181A254DCA00D3F64E /* ViewPatch.swift */,
 				50D521051A2963EB00DD47B7 /* Patch.swift */,
 				500AC16E1A297F7A009BD736 /* Publink.swift */,
+				500AC1701A2C3C55009BD736 /* TouchPatch.swift */,
 				50F01E1A1A25551A00D3F64E /* MyPlayground.playground */,
 				50F01DFC1A254D4800D3F64E /* Main.storyboard */,
 				50F01DFF1A254D4800D3F64E /* Images.xcassets */,
@@ -225,6 +228,7 @@
 			files = (
 				50F01DFB1A254D4800D3F64E /* ViewController.swift in Sources */,
 				50F01DF91A254D4800D3F64E /* AppDelegate.swift in Sources */,
+				500AC1711A2C3C55009BD736 /* TouchPatch.swift in Sources */,
 				500AC16F1A297F7A009BD736 /* Publink.swift in Sources */,
 				50D521061A2963EB00DD47B7 /* Patch.swift in Sources */,
 				50F01E191A254DCA00D3F64E /* ViewPatch.swift in Sources */,

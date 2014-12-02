@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum ViewPatchInput: String {
+enum ViewPatchInput: PatchInput {
     case X = "X",
     Y = "Y",
     Width = "Width",
@@ -24,12 +24,13 @@ class ViewPatch: Patch {
     override init(identifier: String) {
         super.init(identifier: identifier)
 
-        addInput("X", updateX)
-        addInput("Y", updateY)
-        addInput("Width", updateWidth)
-        addInput("Height", updateHeight)
-        addInput("Superview", updateSuperview)
-        addInput("Color", updateColor)
+        addInput(ViewPatchInput.X.rawValue, updateX)
+        addInput(ViewPatchInput.Y.rawValue, updateY)
+        addInput(ViewPatchInput.Width.rawValue, updateWidth)
+        addInput(ViewPatchInput.Height.rawValue, updateHeight)
+        addInput(ViewPatchInput.Superview.rawValue, updateSuperview)
+        addInput(ViewPatchInput.Color.rawValue, updateColor)
+
     }
 
     func updateX(value: Any) {
