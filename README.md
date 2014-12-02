@@ -38,12 +38,12 @@ To create a custom `Patch`, first subclass `Patch` or any other pre-existing sub
 It is best practice to use a String enumeration, named by combining your Patch name followed by "Input", to define input and output names. This makes it easier to determine available inputs and outputs when interacting with a Patch, without having to go back and forth to the Patch definition (Thanks to Xcode's badass autocompletion):
 
 ``` Swift
-enum ViewPatchInput: String {
+enum ViewPatchInput: PatchInput {
     case X = "X",
     Y = "Y", …
 }
 
-enum ViewPatchOutput: String {
+enum ViewPatchOutput: PatchOutput {
     case View = "View", …
 }
 ```
