@@ -27,7 +27,7 @@ The second is by calling `setInput(inputName: PatchInput, _ inputPublink: Publin
 
 ### Publishing output
 
-Output is published from a Patch by calling `publish(value: Any?)` on one of that Patch's outputs. See [TapPatch](https://github.com/gilesvangruisen/Wolf/blob/master/Wolf/TouchPatch.swift#L44-L47) for an example of how output X & Y values are published whenever the input view receives a touch.
+Output is published from a Patch by calling `publish(value: Any?)` on one of that Patch's outputs. See [TapPatch](https://github.com/gilesvangruisen/Wolf/blob/master/Wolf/TapPatch.swift#L44-L47) for an example of how output X & Y values are published whenever the input view receives a tap gesture.
 
 ## Creating Patches
 
