@@ -21,8 +21,8 @@ class TapPatch: Patch {
 
     var tapGesture = UITapGestureRecognizer()
 
-    override init(identifier: String) {
-        super.init(identifier: identifier)
+    override init() {
+        super.init()
 
         let selector: Selector = "gesture:"
         tapGesture.addTarget(self, action: selector)

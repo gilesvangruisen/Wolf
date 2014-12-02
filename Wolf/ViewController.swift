@@ -13,16 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let viewPatch = ViewPatch(identifier: "view")
+        let viewPatch = ViewPatch()
         viewPatch.inputs[ViewPatchInput.Superview.rawValue]?.publish(self.view)
         viewPatch.inputs[ViewPatchInput.Width.rawValue]?.publish(100 as CGFloat)
         viewPatch.inputs[ViewPatchInput.Height.rawValue]?.publish(100 as CGFloat)
         viewPatch.inputs[ViewPatchInput.Color.rawValue]?.publish(UIColor.blueColor())
 
-        let panPatch = PanPatch(identifier: "pan")
+        let panPatch = PanPatch()
         panPatch.inputs[TapPatchInput.View.rawValue]?.publish(view)
-        viewPatch.setInput(ViewPatchInput.CenterX.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.X.rawValue]!)
-        viewPatch.setInput(ViewPatchInput.CenterY.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.Y.rawValue]!)
+        viewPatch.setInput(ViewPatchInput.CenterX.rawValue, panPatch.outputs[TapPatchOuput.X.rawValue]!)
+        viewPatch.setInput(ViewPatchInput.CenterY.rawValue, panPatch.outputs[TapPatchOuput.Y.rawValue]!)
 
     }
 

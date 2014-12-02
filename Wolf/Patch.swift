@@ -13,36 +13,29 @@ typealias PatchOutput = String
 
 class Patch: NSObject {
 
-    /** The patch's unique identifier */
-    var identifier: String
-
     /** The patch's input Publinks. */
     var inputs = [String: Publink]()
 
     /** The patch's output Publinks */
     var outputs = [String: Publink]()
 
-    init(identifier: String) {
-        self.identifier = identifier
-    }
-
     /** Add an input with name and publink */
     func addInput(inputName: PatchInput, _ subscriptionBlock: SubscriptionBlock) {
         if let currentInput = inputs[inputName] {
-            currentInput.unsubscribe(subscriptionKey(identifier, inputName))
+            currentInput.unsubscribe(subscriptionKey(self, inputName))
         }
 
         let newInput = Publink()
         inputs[inputName] = newInput
-        newInput.subscribeNamed(subscriptionKey(identifier, inputName), subscriptionBlock)
+        newInput.subscribeNamed(subscriptionKey(self, inputName), subscriptionBlock)
     }
 
-    func setInput(inputName: PatchInput, inputPublink: Publink) {
+    func setInput(inputName: PatchInput, _ inputPublink: Publink) {
         if let input = inputs[inputName] {
-            let subscriptionName = subscriptionKey(identifier, inputName)
+            let subscriptionName = subscriptionKey(self, inputName)
 
             if let subscriptionBlock = input.namedSubscriptionBlocks[subscriptionName] {
-                input.unsubscribe(subscriptionKey(identifier, inputName))
+                input.unsubscribe(subscriptionKey(self, inputName))
                 inputPublink.subscribeNamed(subscriptionName, subscriptionBlock)
             }
 
@@ -53,7 +46,7 @@ class Patch: NSObject {
     /** Remove input by name */
     func removeInput(name: PatchInput) {
         if let input = inputs[name] {
-            input.unsubscribe(identifier)
+            input.unsubscribe(subscriptionKey(self, name))
             inputs[name] = Publink()
         }
     }
@@ -66,19 +59,19 @@ class Patch: NSObject {
     /** Subscribe to output with patch */
     func subscribe(outputName: PatchOutput, _ patch: Patch, _ subscriptionBlock: SubscriptionBlock) {
         if let output = outputs[outputName] {
-            output.subscribeNamed(subscriptionKey(patch.identifier, outputName), subscriptionBlock)
+            output.subscribeNamed(subscriptionKey(patch, outputName), subscriptionBlock)
         }
     }
 
     /** Unsubscribe patch from output */
-    func unsubscribe(outputName: PatchOutput, patch: Patch) {
+    func unsubscribe(outputName: PatchOutput, _ patch: Patch) {
         if let output = outputs[outputName] {
-            output.unsubscribe(patch.identifier)
+            output.unsubscribe(subscriptionKey(self, outputName))
         }
     }
 
-    private func subscriptionKey(patchIdentifier: String, _ publinkName: String) -> String {
-        return "\(patchIdentifier)-\(publinkName)"
+    private func subscriptionKey(patch: Patch, _ publinkName: String) -> String {
+        return "\(patch.description)-\(publinkName)"
     }
 
 }

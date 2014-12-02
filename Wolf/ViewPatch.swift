@@ -23,8 +23,8 @@ class ViewPatch: Patch {
 
     var view = UIView()
 
-    override init(identifier: String) {
-        super.init(identifier: identifier)
+    override init() {
+        super.init()
 
         addInput(ViewPatchInput.X.rawValue, updateX)
         addInput(ViewPatchInput.Y.rawValue, updateY)

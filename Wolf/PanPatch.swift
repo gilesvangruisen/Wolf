@@ -23,8 +23,8 @@ class PanPatch: Patch {
 
     var tapGesture = UIPanGestureRecognizer()
 
-    override init(identifier: String) {
-        super.init(identifier: identifier)
+    override init() {
+        super.init()
 
         let selector: Selector = "gesture:"
         tapGesture.addTarget(self, action: selector)
