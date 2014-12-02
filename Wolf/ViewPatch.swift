@@ -19,6 +19,10 @@ enum ViewPatchInput: PatchInput {
     Color = "Color"
 }
 
+enum ViewPatchOutput: PatchOutput {
+    case View = "View"
+}
+
 class ViewPatch: Patch {
 
     var view = UIView()
@@ -35,6 +39,8 @@ class ViewPatch: Patch {
         addInput(ViewPatchInput.Superview.rawValue, updateSuperview)
         addInput(ViewPatchInput.Color.rawValue, updateColor)
 
+        addOutput(ViewPatchOutput.View.rawValue)
+        outputs[ViewPatchOutput.View.rawValue]?.publish(view)
     }
 
     func updateX(value: Any) {
