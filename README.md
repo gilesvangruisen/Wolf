@@ -31,7 +31,7 @@ Output is published from a Patch by calling `publish(value: Any?)` on one of tha
 
 ## Creating Patches
 
-To create a custom `Patch`, first subclass `Patch` or any other pre-existing subclass of `Patch`.
+To create a custom Patch, first subclass `Patch` or any subclass thereof.
 
 ### Defining available inputs and ouputs
 
