@@ -11,7 +11,7 @@ import Foundation
 typealias PatchInput = String
 typealias PatchOutput = String
 
-class Patch {
+class Patch: NSObject {
 
     /** The patch's unique identifier */
     var identifier: String

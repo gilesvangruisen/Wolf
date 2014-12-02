@@ -14,9 +14,7 @@ enum TapPatchInput: PatchInput {
 
 enum TapPatchOuput: PatchOutput {
     case X = "X",
-    Y = "Y",
-    VelocityX = "VelocityX",
-    VelocityY = "VelocityY"
+    Y = "Y"
 }
 
 class TapPatch: Patch {
@@ -26,13 +24,13 @@ class TapPatch: Patch {
     override init(identifier: String) {
         super.init(identifier: identifier)
 
-        tapGesture.addTarget(self, action: "gesture:")
+        let selector: Selector = "gesture:"
+        tapGesture.addTarget(self, action: selector)
 
         addInput(TapPatchInput.View.rawValue, updateView)
+
         addOutput(TapPatchOuput.X.rawValue)
         addOutput(TapPatchOuput.Y.rawValue)
-        addOutput(TapPatchOuput.VelocityX.rawValue)
-        addOutput(TapPatchOuput.VelocityY.rawValue)
 
     }
 
@@ -43,8 +41,9 @@ class TapPatch: Patch {
         }
     }
 
-    func gesture(gesture: UITapGestureRecognizer) {
-        println("TOUCH")
+    func gesture(recognizer: UITapGestureRecognizer) {
+        outputs[TapPatchOuput.X.rawValue]?.publish(recognizer.locationInView(recognizer.view!).x)
+        outputs[TapPatchOuput.Y.rawValue]?.publish(recognizer.locationInView(recognizer.view!).y)
     }
 
 }

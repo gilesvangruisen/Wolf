@@ -13,16 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let viewPatch = ViewPatch(identifier: "Untitled")
-        viewPatch.inputs["Superview"]?.publish(self.view)
-        viewPatch.inputs["X"]?.publish(0 as CGFloat)
-        viewPatch.inputs["Y"]?.publish(0 as CGFloat)
-        viewPatch.inputs["Width"]?.publish(100 as CGFloat)
-        viewPatch.inputs["Height"]?.publish(100 as CGFloat)
-        viewPatch.inputs["Color"]?.publish(UIColor.blueColor())
+        let viewPatch = ViewPatch(identifier: "view")
+        viewPatch.inputs[ViewPatchInput.Superview.rawValue]?.publish(self.view)
+        viewPatch.inputs[ViewPatchInput.Width.rawValue]?.publish(100 as CGFloat)
+        viewPatch.inputs[ViewPatchInput.Height.rawValue]?.publish(100 as CGFloat)
+        viewPatch.inputs[ViewPatchInput.Color.rawValue]?.publish(UIColor.blueColor())
 
-        let tapPatch = TapPatch(identifier: "1")
-        tapPatch.inputs["View"]?.publish(viewPatch.view)
+        let panPatch = PanPatch(identifier: "pan")
+        panPatch.inputs[TapPatchInput.View.rawValue]?.publish(view)
+        viewPatch.setInput(ViewPatchInput.X.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.X.rawValue]!)
+        viewPatch.setInput(ViewPatchInput.Y.rawValue, inputPublink: panPatch.outputs[TapPatchOuput.Y.rawValue]!)
+
     }
 
     override func didReceiveMemoryWarning() {
